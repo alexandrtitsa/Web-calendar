@@ -1,0 +1,211 @@
+.gridContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  background-color: #ffffff;
+  position: relative;
+}
+
+.headerRow {
+  display: flex;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  background-color: #ffffff;
+  z-index: 20;
+}
+
+.timeGutterHeader {
+  width: 60px;
+  min-width: 60px;
+  border-right: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.dayHeader {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-right: 1px solid #e5e7eb;
+
+  .dayName {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #6b7280;
+  }
+
+  .dayNumber {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
+    margin-top: 0.125rem;
+  }
+}
+
+/* Секція для цілоденних подій (All-Day Events) */
+.allDayRow {
+  display: flex;
+  border-bottom: 1px solid #e5e7eb;
+  background-color: #ffffff;
+  min-height: 32px;
+  position: sticky;
+  top: 53px; /* Закріплюємо одразу під headerRow */
+  z-index: 15;
+
+  .allDayLabel {
+    font-size: 0.688rem;
+    font-weight: 500;
+    color: #9ca3af;
+    padding-right: 0.5rem;
+    text-transform: lowercase;
+    user-select: none;
+  }
+}
+
+.allDayColumns {
+  display: grid;
+  flex: 1;
+}
+
+.allDayColumn {
+  border-right: 1px solid #e5e7eb;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.allDayEventBadge {
+  border-radius: 4px;
+  padding: 2px 6px;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  user-select: none;
+  transition: opacity 0.15s ease, transform 0.1s ease;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  .allDayTitle {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  position: relative;
+}
+
+.timeColumn {
+  width: 60px;
+  min-width: 60px;
+  border-right: 1px solid #e5e7eb;
+}
+
+.timeSlot {
+  height: 60px;
+  box-sizing: border-box;
+  padding-right: 0.5rem;
+  font-size: 0.75rem;
+  color: #9ca3af;
+  text-align: right;
+}
+
+.daysColumns {
+  display: grid;
+  flex: 1;
+  position: relative;
+}
+
+.dayColumn {
+  position: relative;
+  border-right: 1px solid #e5e7eb;
+  height: 1440px; // 24 години * 60px
+}
+
+.hourCell {
+  height: 60px;
+  border-bottom: 1px solid #f3f4f6;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f9fafb;
+  }
+}
+
+.eventCard {
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  border-radius: 6px;
+  padding: 4px 8px;
+  color: #fff;
+  cursor: grab;
+  user-select: none;
+  z-index: 5;
+  transition: box-shadow 0.2s ease;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  &.dragging {
+    opacity: 0.8;
+    z-index: 10;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  }
+
+  .resizeHandleTop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    cursor: ns-resize;
+    z-index: 6;
+  }
+
+  .resizeHandleBottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    cursor: ns-resize;
+    z-index: 6;
+  }
+}
+
+.eventTitle {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.eventTime {
+  font-size: 0.688rem;
+  opacity: 0.9;
+}
